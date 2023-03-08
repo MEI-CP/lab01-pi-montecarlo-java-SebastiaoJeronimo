@@ -53,11 +53,10 @@ public class ApproxPiSeq implements Callable<Double> {
         long numberSteps = Long.parseLong(args[0]);
         ApproxPiSeq sim = new ApproxPiSeq(numberSteps);
         long startTime = System.nanoTime();
-        var pi = sim.call();
+        double pi = sim.call();
         long stopTime = System.nanoTime();
         System.out.printf ("%s\t%s\t%s\n", 
                            "numberSteps", "time (µsec)", "π (estimation)");
-        System.out.printf ("%10d\t%.6f\t%.9f\n", 
-                           numberSteps, (stopTime - startTime)/(float)1e9, pi);
+        System.out.printf ("%10d\t%.6f\t%.9f\n", numberSteps, (stopTime - startTime)/(float)1e9, pi);
     }
 }

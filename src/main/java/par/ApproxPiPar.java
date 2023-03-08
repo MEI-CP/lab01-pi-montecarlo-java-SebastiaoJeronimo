@@ -47,7 +47,7 @@ public class ApproxPiPar extends ApproxPiSeq {
 
         ApproxPiPar sim = new ApproxPiPar(numberSteps, nThreads);
         long startTime = System.nanoTime();
-        var pi = sim.call();
+        double pi = sim.call();
         long stopTime = System.nanoTime();
         System.out.println  ("numberThreads\tnumberSteps\ttime (µsec)\tπ (estimation)");
         System.out.printf ("%13d\t%10d\t%.6f\t%.9f\n", nThreads,
