@@ -1,5 +1,8 @@
 package seq;
 
+import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
+
+import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 /**
@@ -28,7 +31,18 @@ public class ApproxPiSeq implements Callable<Double> {
      */
     protected double pi4() {
         // TODO: implement
-        return 0;
+        double aux = this.numberSteps;
+        double x = 0;
+        double y = 0;
+        double sum = 0;
+        while(aux > 0) {
+            x = Math.random();
+            y = Math.random();
+            if ( Math.pow(x,2) + Math.pow(y,2) <= 1)
+                sum = sum + 1/this.numberSteps;
+            aux--;
+        }
+        return sum;
     }
 
     /**
@@ -50,6 +64,9 @@ public class ApproxPiSeq implements Callable<Double> {
             return;
         }
 
+//        Scanner input = new Scanner(System.in);
+//        int nbrOfPoints = input.nextInt();
+//        double apro= pi4(nbrOfPoints);
         long numberSteps = Long.parseLong(args[0]);
         ApproxPiSeq sim = new ApproxPiSeq(numberSteps);
         long startTime = System.nanoTime();
